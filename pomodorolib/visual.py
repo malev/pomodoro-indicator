@@ -30,6 +30,7 @@ import appindicator
 import pynotify
 import sys
 import pomodoro_state
+import configuration
 
 """
 Pomodoro's indicator
@@ -64,8 +65,9 @@ class PomodoroIndicator:
     def __init__(self):
         self.pomodoro = pomodoro_state.PomodoroMachine()
         self.notificator = PomodoroOSDNotificator()
+        self.icon_directory = configuration.icon_directory()
         self.ind = appindicator.Indicator("pomodoro-indicator",
-                                           "indicator-messages",
+                                           self.idle_icon(),
                                            appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)
         self.ind.set_attention_icon("new-messages-red")
@@ -74,6 +76,13 @@ class PomodoroIndicator:
         self.menu_setup()
         self.ind.set_menu(self.menu)
         self.timer_id = None
+
+    def idle_icon(self):
+        print self.icon_directory + "tomato_grey.png"
+        return self.icon_directory + "tomato_grey.png"#"indicator-messages"
+        
+    def active_icon(self):
+        return self.icon_directory + "tomato_24.png"#"indicator-messages"
 
     def menu_setup(self):
         self.menu = gtk.Menu()
@@ -209,4 +218,3 @@ def run():
 if __name__ == "__main__":
     run()
     print __doc__
-
