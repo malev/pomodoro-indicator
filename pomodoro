@@ -23,8 +23,9 @@
 # You should have received a copy of both the GNU Lesser General Public
 # License version 3 and version 2.1 along with this program.  If not, see
 # <http://www.gnu.org/licenses/>
+#
 
-from pomodoro-indicator import visual
+from pomodorolib import visual
 
 if __name__ == "__main__":
     visual.run()

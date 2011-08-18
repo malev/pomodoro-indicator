@@ -41,11 +41,10 @@ class PomodoroOSDNotificator:
     def __init__(self):
         pass
 
-    def beep(self.):
+    def beep(self):
         pass
 
-    def notificatot_with_sound(self, state):
-        self.beep()
+    def notificate_with_sound(self, state):
         pynotify.init("icon-summary-body")
         message = self.generate_message(state)
         osd_box = pynotify.Notificator(
@@ -70,7 +69,7 @@ class PomodoroIndicator:
                                            appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)
         self.ind.set_attention_icon("new-messages-red")
-        self.ind.set_label("hfosd")
+        self.ind.set_label("25:00")
 
         self.menu_setup()
         self.ind.set_menu(self.menu)
@@ -203,10 +202,11 @@ class PomodoroIndicator:
     def quit(self, widget):
         sys.exit(0)
 
-def run()
+def run():
     indicator = PomodoroIndicator()
     indicator.main()
 
 if __name__ == "__main__":
+    run()
     print __doc__
 

@@ -96,7 +96,7 @@ class PomodoroState(object):
     
     def waiting(self):
         return False
-    
+
     def running_next_second(self):
         self.elapsed_time += 1
         if self.elapsed_time >= self.max_time:
@@ -201,7 +201,7 @@ class PomodoroMachine(object):
 
     def elapsed_time(self):
         return self.convert_time(self.state.elapsed_time)
-        
+
     def start(self):
         self.state.start()
     
