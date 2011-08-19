@@ -40,18 +40,21 @@ Pomodoro's indicator
 
 class PomodoroOSDNotificator:
     def __init__(self):
-        pass
+        self.icon_directory = configuration.icon_directory()
 
     def beep(self):
         pass
 
+    def big_icon(self):
+        return self.icon_directory + "tomato_32.png"
+
     def notificate_with_sound(self, state):
         pynotify.init("icon-summary-body")
         message = self.generate_message(state)
-        osd_box = pynotify.Notificator(
+        osd_box = pynotify.Notification(
                 "Pomodoro",
                 message,
-                "notification-message-email"
+                self.big_icon()
                 )
         osd_box.show()
 
@@ -60,6 +63,7 @@ class PomodoroOSDNotificator:
             message = "You should start working."
         elif status == pomodoro_state.RESTING_STATE:
             message = "You can take a break now."
+        return message
 
 class PomodoroIndicator:
     def __init__(self):
@@ -216,5 +220,4 @@ def run():
     indicator.main()
 
 if __name__ == "__main__":
-    run()
     print __doc__
