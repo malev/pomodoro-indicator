@@ -82,7 +82,6 @@ class PomodoroIndicator:
         self.timer_id = None
 
     def idle_icon(self):
-        print self.icon_directory + "tomato_grey.png"
         return self.icon_directory + "tomato_grey.png"#"indicator-messages"
         
     def active_icon(self):
