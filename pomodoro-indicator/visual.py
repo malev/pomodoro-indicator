@@ -75,7 +75,7 @@ class PomodoroIndicator:
                                            appindicator.CATEGORY_APPLICATION_STATUS)
         self.ind.set_status(appindicator.STATUS_ACTIVE)
         self.ind.set_attention_icon("new-messages-red")
-        self.ind.set_label("25:00")
+        #self.ind.set_label("25:00")
 
         self.menu_setup()
         self.ind.set_menu(self.menu)
@@ -213,10 +213,6 @@ class PomodoroIndicator:
 
     def quit(self, widget):
         sys.exit(0)
-
-def run():
-    indicator = PomodoroIndicator()
-    indicator.main()
 
 if __name__ == "__main__":
     print __doc__
