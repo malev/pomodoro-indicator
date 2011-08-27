@@ -44,7 +44,7 @@ else:
 if project_basedir not in sys.path:
     sys.path.insert(0, project_basedir)
 
-from pomodoro-indicator import visual
+from pomodoro import visual
 
 indicator = visual.PomodoroIndicator()
 indicator.main()
