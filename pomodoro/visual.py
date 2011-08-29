@@ -83,7 +83,7 @@ class PomodoroIndicator:
 
     def idle_icon(self):
         return self.icon_directory + "tomato_grey.png"#"indicator-messages"
-        
+
     def active_icon(self):
         return self.icon_directory + "tomato_24.png"#"indicator-messages"
 
@@ -151,15 +151,15 @@ class PomodoroIndicator:
             if self.current_state() == state:
                 for item in items:
                     item.show()
-    
+
     def change_status_menu_item_label(self):
         label = self.current_state_item.child
         label.set_text(self.pomodoro.current_state().capitalize())
-    
+
     def change_timer_menu_item_label(self, next_label):
         label = self.timer_item.child
         label.set_text(next_label)
-    
+
     def generate_notification(self):
         if self.current_state() == pomodoro_state.WORKING_STATE:
             self.ind.set_status(appindicator.STATUS_ACTIVE)
@@ -185,7 +185,7 @@ class PomodoroIndicator:
         self.start_timer()
         self.pomodoro.start()
         self.redraw_menu()
-    
+
     def pause(self, widget, data=None):
         self.start_timer()
         self.pomodoro.start()
@@ -200,10 +200,10 @@ class PomodoroIndicator:
         self.stop_timer()
         self.pomodoro.stop()
         self.redraw_menu()
-        
+
     def start_timer(self):
         self.timer_id = gobject.timeout_add(1000, self.update_timer)
-    
+
     def stop_timer(self):
         gobject.source_remove(self.timer_id)
         self.timer_id = None

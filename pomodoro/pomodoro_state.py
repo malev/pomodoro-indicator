@@ -77,23 +77,23 @@ class PomodoroState(object):
 
     def pause(self):
         pass
-    
+
     def resume(self):
         pass
-    
+
     def stop(self):
         self.pomodoro.state = self.pomodoro.waiting_state
         self.pomodoro.state.elapsed_time = 0
-        
+
     def working(self):
         return False
-    
+
     def resting(self):
         return False
-        
+
     def paused(self):
         return False
-    
+
     def waiting(self):
         return False
 
@@ -119,10 +119,10 @@ class WaitingState(PomodoroState):
 
     def waiting(self):
         return True
-        
+
     def start(self):
         self.next_state()
-        
+
     def next_state(self):
         self.pomodoro.state = self.pomodoro.working_state
         self.pomodoro.state.elapsed_time = 0
@@ -134,13 +134,13 @@ class WorkingState(PomodoroState):
         self.name = WORKING_STATE
         self.max_time = MAX_WORKING_TIME
         self.elapsed_time = 0
-    
+
     def next_state(self):
         self.pomodoro.state = self.pomodoro.resting_state
-    
+
     def pause(self):
         self.pause_it()
-    
+
     def next_second(self):
         return self.running_next_second()
 
@@ -152,10 +152,10 @@ class RestingState(PomodoroState):
         self.pomodoro = pomodoro
         self.name = RESTING_STATE
         self.max_time = MAX_RESTING_TIME
-    
+
     def next_state(self):
         self.pomodoro.state = self.pomodoro.working_state
-        
+
     def pause(self):
         self.pause_it()
 
@@ -170,7 +170,7 @@ class PausedState(PomodoroState):
         self.pomodoro = pomodoro
         self.elapsed_time = 0
         self.name = PAUSED_STATE
-        
+
     def resume(self):
         self.next_state()
 
@@ -190,10 +190,10 @@ class PomodoroMachine(object):
         self.previous_state = None
         self.previous_elapsed_time = 0
         self.state = self.waiting_state
-    
+
     def current_state(self):
         return self.state.current_state()
-    
+
     def in_this_state(self, str_state):
         if hasattr(self.state, str_state):
             return getattr(self.state, str_state)()
@@ -204,29 +204,29 @@ class PomodoroMachine(object):
 
     def start(self):
         self.state.start()
-    
+
     def stop(self):
         self.state.stop()
-    
+
     def pause(self):
         self.state.pause()
-    
+
     def resume(self):
         self.state.resume()
 
     def next_second(self):
         """Returns true if the next second produce a state change."""
         return self.state.next_second()
-        
+
     def show_start_button(self):
         return self.state.working()
-    
+
     def show_stop_button(self):
         return self.state.working() or self.state.resting() or self.state.paused()
-    
+
     def show_pause_button(self):
         return self.state.working() or self.state.resting()
-    
+
     def show_resume_button(self):
         return self.state.paused()
 
