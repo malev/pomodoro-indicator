@@ -27,11 +27,10 @@
 
 """Build tar.gz for pomodoro-indicator.
 Needed packages to run (using Debian/Ubuntu package names):
-    python-zope.testbrowser 3.5.1
-    python-mechanize 0.1.11
-    python-twisted-bin 8.2.0
-    python-gtk2 2.16.0
-    python-xdg 0.15
+    python-appindicator  0.3.0-0ubuntu1
+    python-gobject       2.28.3-1ubuntu1.1
+    python-notify        0.1.1-2build4
+    python-gtk2-dev      0.1.1-2build4
 """
 
 
