@@ -92,8 +92,8 @@ setup(
     long_description = 'Pomodoro technique app indicator',
     url = 'https://github.com/malev/pomodoro-indicator',
 
-    packages = ["pomodoro-indicator"],
-    package_data = {"pomodoro-indicator": ["images/*.png"]},
+    packages = ["pomodoro"],
+    package_data = {"pomodoro": ["images/*.png"]},
     scripts = ["bin/pomodoro-indicator"],
 
     cmdclass = {
