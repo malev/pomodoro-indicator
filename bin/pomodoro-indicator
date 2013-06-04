@@ -48,6 +48,3 @@ from pomodoro import visual
 
 indicator = visual.PomodoroIndicator()
 indicator.main()
-
-
-
