@@ -9,7 +9,7 @@ TODO
 
 More information
 ----------------
-You can find more info about me and my projects on my personal [blog](https://blog.malev.com.ar)
+You can find more info about me and my projects on my personal [blog](http://malev.com.ar) or my [fellowship blog](http://codingnews.info).
 
 License
 -------
